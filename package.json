@@ -1,0 +1,14 @@
+{
+  "name": "@ayakashi/types",
+  "version": "1.0.0-beta1",
+  "description": "Type definitions to provide editor support",
+  "author": {
+    "name": "ayakashi.io",
+    "email": "hello@ayakashi.io"
+  },
+  "repository": {
+    "url": "https://github.com/ayakashi-io/types"
+  },
+  "license": "MIT",
+  "typings": "types/index.d.ts"
+}
