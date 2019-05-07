@@ -4,4 +4,5 @@ export declare function getOpLog(): {
     error: (...logs: string[]) => void;
     debug: (...logs: string[]) => void;
     waiter: (text: string) => import("ora").Ora;
+    messageBox: (logs: string[]) => void;
 };

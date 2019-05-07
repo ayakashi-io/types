@@ -9,6 +9,7 @@ declare type PassedLog = {
         operationId: string;
         startDate: string;
         procName: string;
+        appRoot: string;
     };
 };
 export default function scriptWrapper(log: PassedLog): Promise<any>;

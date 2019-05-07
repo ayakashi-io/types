@@ -204,6 +204,25 @@ export interface IDomProp {
     ```
     */
     selectChildren: (childPropId?: string) => IDomProp;
+    /**
+     * Checks if a prop has any matches. The prop will be re-evaluated every time this runs.
+     * Useful for dynamic pagination loops.
+     * ```js
+    const next = ayakashi
+        .select("next")
+        .where({
+            id: {
+                eq: "nextPage"
+            }
+        })
+    while (await next.hasMatches()) {
+        // do work in the current page...
+        // go to the next page
+        await ayakashi.navigationClick("next");
+    }
+    ```
+    */
+    hasMatches: () => Promise<boolean>;
 }
 export declare function createQuery(ayakashiInstance: IAyakashiInstance, opts?: {
     propId?: string;
