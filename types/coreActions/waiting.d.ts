@@ -25,17 +25,16 @@ declare module "../prelude/prelude" {
         /**
          * Waits for the load event of a new page.
          * Learn more at https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events
-         * ```js
-        await ayakashi.wait(3000);
-        ```
         */
         waitForLoadEvent: (timeout?: number) => Promise<void>;
         /**
+         * Waits for the domContentLoaded event of a new page.
+         * Learn more at https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events
+        */
+        waitForDomContentLoadedEvent: (timeout?: number) => Promise<void>;
+        /**
          * Waits for an in-page navigation to occur in a dynamic page or single page application.
          * Learn more at https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events
-         * ```js
-        await ayakashi.wait(3000);
-        ```
         */
         waitForInPageNavigation: (timeout?: number) => Promise<void>;
         /**

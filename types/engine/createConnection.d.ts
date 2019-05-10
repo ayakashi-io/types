@@ -29,6 +29,7 @@ interface ICDPClient {
     Page: {
         enable: () => Promise<void>;
         loadEventFired: (fn?: () => void) => (() => void);
+        domContentEventFired: (fn?: () => void) => (() => void);
         navigate: (options: {
             url: string;
         }) => Promise<void>;
@@ -38,6 +39,7 @@ interface ICDPClient {
         removeScriptToEvaluateOnNewDocument: (scriptId: object) => Promise<void>;
         navigatedWithinDocument: (fn?: () => void) => (() => void);
         frameNavigated: (fn?: () => void) => (() => void);
+        stopLoading: () => Promise<void>;
     };
     DOM: {
         enable: () => Promise<void>;

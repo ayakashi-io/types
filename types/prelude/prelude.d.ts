@@ -179,6 +179,18 @@ export interface IAyakashiInstance {
     ```
     */
     yieldEach: (extracted: object[] | Promise<object[]>) => Promise<void>;
+    /**
+     * Retry an async operation.
+     * Default is 10 retries.
+     * If the operation returns a result, that result will also be returned by retry.
+     * Learn more about retries at: https://ayakashi.io/docs/going_deeper/automatic_retries.html
+     * ```js
+    await ayakashi.retry(async function() {
+        await ayakashi.goTo("https://github.com/ayakashi-io/ayakashi");
+    }, 5);
+    ```
+    */
+    retry: <T>(task: (currentRetry: number) => Promise<T>, retries?: number) => Promise<T>;
 }
 declare global {
     interface Window {

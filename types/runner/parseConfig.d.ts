@@ -20,6 +20,12 @@ declare type StepConfig = {
      * Used by the `--simple` run mode. For internal use only.
      */
     simple?: boolean;
+    /**
+     * How many times to retry the step if there is an error.
+     * Learn more about retries at https://ayakashi.io/docs/going_deeper/automatic_retries.html
+     * No retries are performed by default.
+     */
+    retries?: number;
 };
 declare type StepLoadingOptions = {
     /**
@@ -208,6 +214,7 @@ export declare type ProcGenerator = {
     from: string;
     to: string | string[];
     processor: Function | string;
+    config: StepConfig;
 };
 export declare function firstPass(config: Config, previous?: string): (string | string[])[];
 export declare function checkStepLevels(steps: (string | string[])[]): void;
@@ -216,7 +223,7 @@ export declare function countSteps(steps: (string | string[])[]): number;
 export declare function getObjectReference(config: Config, stepName: string): {
     type?: string;
     module?: string;
-    config?: object;
+    config?: StepConfig;
 };
 export declare function createProcGenerators(config: Config, steps: (string | string[])[], options: {
     bridgePort: number;
