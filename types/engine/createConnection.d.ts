@@ -1,20 +1,20 @@
 /// <reference types="node" />
 import { Unsubscriber, ICDPTab } from "./createTarget";
 /**
- * Emulation options for the scrapper to use.
- */
+* Emulation options for the scrapper to use.
+*/
 export declare type EmulatorOptions = {
-    /**
-     * Sets the available width.
-     */
+/**
+* Sets the available width.
+*/
     width: number;
-    /**
-     * Sets the available height.
-     */
+/**
+* Sets the available height.
+*/
     height: number;
-    /**
-     * Set it to true to emulate a mobile device.
-     */
+/**
+* Set it to true to emulate a mobile device.
+*/
     mobile: boolean;
     deviceScaleFactor: 0;
 };
