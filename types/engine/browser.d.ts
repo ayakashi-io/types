@@ -24,7 +24,7 @@ export interface IHeadlessChrome {
         protocolPort: number;
     }) => Promise<void>;
     close: () => Promise<void>;
-    createTarget: (overrideMaxTargets?: boolean) => Promise<Target | null>;
+    createTarget: () => Promise<Target | null>;
     collectDeadTargets: () => Promise<void>;
 }
 export declare function getInstance(): IHeadlessChrome;

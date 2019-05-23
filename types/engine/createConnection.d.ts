@@ -19,6 +19,9 @@ export declare type EmulatorOptions = {
     deviceScaleFactor: 0;
 };
 interface ICDPClient {
+    _ws: {
+        readyState: 1 | 2 | 3;
+    };
     close: () => Promise<void>;
     Browser: {
         close: () => Promise<void>;
@@ -40,6 +43,9 @@ interface ICDPClient {
         navigatedWithinDocument: (fn?: () => void) => (() => void);
         frameNavigated: (fn?: () => void) => (() => void);
         stopLoading: () => Promise<void>;
+        setBypassCSP: (arg0: {
+            enabled: boolean;
+        }) => Promise<void>;
     };
     DOM: {
         enable: () => Promise<void>;
