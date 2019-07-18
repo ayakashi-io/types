@@ -1,4 +1,3 @@
-import { EmulatorOptions } from "../engine/createConnection";
 declare type PassedLog = {
     id: string;
     body: {
@@ -8,7 +7,6 @@ declare type PassedLog = {
             pipeConsole?: boolean;
             pipeExceptions?: boolean;
             localAutoLoad?: boolean;
-            emulatorOptions?: EmulatorOptions;
             simple?: boolean;
         };
         load: {
@@ -21,10 +19,6 @@ declare type PassedLog = {
             }[];
         };
         module: string;
-        connectionConfig: {
-            bridgePort: number;
-            protocolPort: number;
-        };
         saveTopic: string;
         selfTopic: string;
         projectFolder: string;
@@ -34,7 +28,10 @@ declare type PassedLog = {
         startDate: string;
         procName: string;
         appRoot: string;
+        userAgent?: string;
+        proxyUrl?: string;
+        ignoreCertificateErrors: boolean;
     };
 };
-export default function scrapperWrapper(log: PassedLog): Promise<void>;
+export default function renderlessScrapperWrapper(log: PassedLog): Promise<void>;
 export {};

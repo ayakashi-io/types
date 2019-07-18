@@ -1,3 +1,4 @@
 import { IConnection } from "../../engine/createConnection";
 import { IAyakashiInstance } from "../prelude";
-export declare function attachMetaActions(ayakashiInstance: IAyakashiInstance, connection: IConnection): void;
+import { IRenderlessAyakashiInstance } from "../renderlessPrelude";
+export declare function attachMetaActions(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, connection: IConnection): void;

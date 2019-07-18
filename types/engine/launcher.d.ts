@@ -4,7 +4,7 @@ export interface IBrowserInstance {
     pid: number;
     port: number;
     process: ChildProcess;
-    forceKill: () => Promise<{}>;
+    forceKill: () => Promise<unknown>;
 }
 export declare function launch(passedFlags: string[], options: {
     chromePath: string;

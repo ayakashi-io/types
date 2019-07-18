@@ -1,2 +1,4 @@
 import { IAyakashiInstance } from "../prelude";
-export declare function attachQuery(ayakashiInstance: IAyakashiInstance): void;
+import { IRenderlessAyakashiInstance } from "../renderlessPrelude";
+import { DOMWindow } from "jsdom";
+export declare function attachQuery(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, window?: DOMWindow): void;

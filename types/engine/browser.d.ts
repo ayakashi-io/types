@@ -5,9 +5,6 @@ import { Server } from "http";
 export interface IHeadlessChrome {
     chromeInstance: IBrowserInstance | null;
     bridge: Server | null;
-    targets: Target[];
-    maxTargets: number;
-    getAvailableTarget: () => Promise<Target | null>;
     init: (options: {
         chromePath: string;
         headless?: boolean;
@@ -25,6 +22,6 @@ export interface IHeadlessChrome {
     }) => Promise<void>;
     close: () => Promise<void>;
     createTarget: () => Promise<Target | null>;
-    collectDeadTargets: () => Promise<void>;
+    destroyTarget: (targetId: string, browserContextId: string | null) => Promise<void>;
 }
 export declare function getInstance(): IHeadlessChrome;

@@ -1,2 +1,4 @@
 import { IAyakashiInstance } from "../prelude";
-export declare function attachRetry(ayakashiInstance: IAyakashiInstance): void;
+import { IRenderlessAyakashiInstance } from "../renderlessPrelude";
+import { IApiAyakashiInstance } from "../apiPrelude";
+export declare function attachRetry(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance | IApiAyakashiInstance): void;

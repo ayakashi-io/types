@@ -1,9 +1,15 @@
 import { Where } from "../../domQL/domQL";
 import { IAyakashiInstance } from "../prelude";
+import { IRenderlessAyakashiInstance } from "../renderlessPrelude";
+import { DOMWindow } from "jsdom";
 export interface IDomProp {
     $$prop: symbol;
     id: string;
     parent: IDomProp[];
+/**
+ * @ignore
+*/
+    __trackMissingChildren: boolean;
 /**
  * Defines the query of a new prop.
  * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html
@@ -223,8 +229,39 @@ while (await next.hasMatches()) {
 ```
 */
     hasMatches: () => Promise<boolean>;
+/**
+ * Adds a child match placeholder if a child does not exist in a collection of parents.
+ * Can be used to preserve proper ordering when extracting children that might sometimes not exist.
+* ```js
+// for the following html
+// <div class="container"><a href="http://example.com">link1</a></div>
+// <div class="container">I don't have a link</div>
+// <div class="container"><a href="http://example2.com">link2</a></div>
+ayakashi
+    .select("parentProp")
+    .where({
+        class: {
+            eq: "container"
+        }
+    })
+    .trackMissingChildren()
+    .selectChild("childProp")
+        .where({
+            tagName: {
+                eq: "A"
+            }
+        });
+const result = await ayakashiInstance.extract("childProp");
+// When we extract the childProps, we will get the following (notice the empty childProp):
+// result => [{childProp: "link1"}, {childProp: ""}, {childProp: "link2"}]
+// if we didn't use trackMissingChildren(), we would have gotten:
+// result => [{childProp: "link1"}, {childProp: "link2"}]
+```
+*/
+    trackMissingChildren: () => IDomProp;
 }
-export declare function createQuery(ayakashiInstance: IAyakashiInstance, opts?: {
+export declare function createQuery(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, opts: {
     propId?: string;
     triggerFn?: () => Promise<number>;
+    window?: DOMWindow;
 }): IDomProp;

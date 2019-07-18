@@ -115,7 +115,7 @@ export declare type Config = {
     /**
      * The type of the step.
      */
-        type: "scrapper" | "script";
+        type: "scrapper" | "renderlessScrapper" | "script";
     /**
      * The name of the module.
      */
@@ -139,7 +139,7 @@ export declare type Config = {
         /**
          * The type of the step.
          */
-            type: "scrapper" | "script";
+            type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
         /**
          * The name of the module.
          */
@@ -165,7 +165,7 @@ export declare type Config = {
     /**
      * The type of the step.
      */
-        type: "scrapper" | "script";
+        type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
     /**
      * The name of the module.
      */
@@ -189,7 +189,7 @@ export declare type Config = {
         /**
          * The type of the step.
          */
-            type: "scrapper" | "script";
+            type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
         /**
          * The name of the module.
          */
@@ -220,6 +220,7 @@ export declare function firstPass(config: Config, previous?: string): (string | 
 export declare function checkStepLevels(steps: (string | string[])[]): void;
 export declare function validateStepFormat(steps: (string | string[])[]): void;
 export declare function countSteps(steps: (string | string[])[]): number;
+export declare function isUsingNormalScrapper(steps: (string | string[])[], config: Config): boolean;
 export declare function getObjectReference(config: Config, stepName: string): {
     type?: string;
     module?: string;
@@ -228,8 +229,13 @@ export declare function getObjectReference(config: Config, stepName: string): {
 export declare function createProcGenerators(config: Config, steps: (string | string[])[], options: {
     bridgePort: number;
     protocolPort: number;
+    persistentSession: boolean;
     projectFolder: string;
     operationId: string;
+    storeProjectFolder: string;
     startDate: string;
-}): ProcGenerator[];
+}): {
+    procGenerators: ProcGenerator[];
+    initializers: string[];
+};
 export {};

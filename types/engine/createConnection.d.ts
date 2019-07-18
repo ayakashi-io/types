@@ -1,5 +1,6 @@
 /// <reference types="node" />
-import { Unsubscriber, ICDPTab } from "./createTarget";
+import { Target } from "./createTarget";
+declare type Unsubscriber = () => void;
 /**
  * Emulation options for the scrapper to use.
  */
@@ -18,7 +19,7 @@ export declare type EmulatorOptions = {
     mobile: boolean;
     deviceScaleFactor: 0;
 };
-interface ICDPClient {
+export interface ICDPClient {
     _ws: {
         readyState: 1 | 2 | 3;
     };
@@ -82,8 +83,23 @@ interface ICDPClient {
         }) => void;
     };
     Target: {
+        createTarget: (options: {
+            url: string;
+            browserContextId?: string;
+        }) => Promise<{
+            targetId: string;
+        }>;
         activateTarget: (options: {
             targetId: string;
+        }) => Promise<void>;
+        closeTarget: (options: {
+            targetId: string;
+        }) => Promise<void>;
+        createBrowserContext: () => Promise<{
+            browserContextId: string;
+        }>;
+        disposeBrowserContext: (options: {
+            browserContextId: string;
         }) => Promise<void>;
     };
     Runtime: {
@@ -104,7 +120,7 @@ interface ICDPClient {
 }
 export interface IConnection {
     client: ICDPClient;
-    tab: ICDPTab;
+    target: Target;
     active: boolean;
     preloaderIds: object[];
     preloaders: string[];
@@ -153,5 +169,5 @@ export interface IConnection {
         }) => Promise<void>;
     };
 }
-export declare function createConnection(tab: ICDPTab, bridgePort: number, emulatorOptions?: EmulatorOptions): Promise<IConnection>;
+export declare function createConnection(target: Target, bridgePort: number, emulatorOptions?: EmulatorOptions, disabledBridge?: boolean): Promise<IConnection>;
 export {};
