@@ -10,5 +10,10 @@
     "url": "https://github.com/ayakashi-io/types"
   },
   "license": "MIT",
-  "typings": "types/index.d.ts"
+  "typings": "types/index.d.ts",
+  "dependencies": {
+    "@ayakashi/request": "^2.88.4",
+    "@types/jsdom": "~12.2.4",
+    "@types/node": "~10.0.0"
+  }
 }
