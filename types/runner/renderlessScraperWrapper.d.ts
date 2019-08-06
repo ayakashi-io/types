@@ -33,5 +33,5 @@ declare type PassedLog = {
         ignoreCertificateErrors: boolean;
     };
 };
-export default function renderlessScrapperWrapper(log: PassedLog): Promise<void>;
+export default function renderlessScraperWrapper(log: PassedLog): Promise<void>;
 export {};

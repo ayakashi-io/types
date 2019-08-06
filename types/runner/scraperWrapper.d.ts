@@ -34,7 +34,10 @@ declare type PassedLog = {
         startDate: string;
         procName: string;
         appRoot: string;
+        userAgent?: string;
+        proxyUrl?: string;
+        ignoreCertificateErrors: boolean;
     };
 };
-export default function scrapperWrapper(log: PassedLog): Promise<void>;
+export default function scraperWrapper(log: PassedLog): Promise<void>;
 export {};

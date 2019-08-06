@@ -21,5 +21,5 @@ declare type PassedLog = {
         ignoreCertificateErrors: boolean;
     };
 };
-export default function apiScrapperWrapper(log: PassedLog): Promise<void>;
+export default function apiScraperWrapper(log: PassedLog): Promise<void>;
 export {};

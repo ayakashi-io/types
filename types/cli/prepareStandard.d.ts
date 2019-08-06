@@ -1,4 +1,4 @@
-export declare function prepareStandard(dir: string, configFile: string): {
+export declare function prepareStandard(dir: string, alternativeConfigFile: string): {
     config: any;
     directory: string;
 };

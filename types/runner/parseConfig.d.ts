@@ -13,7 +13,7 @@ declare type StepConfig = {
  */
     localAutoLoad?: boolean;
 /**
- * Emulation options for the scrapper to use.
+ * Emulation options for the scraper to use.
  */
     emulatorOptions?: EmulatorOptions;
 /**
@@ -64,12 +64,12 @@ export declare type Config = {
      */
         headless?: boolean;
     /**
-     * Configures the userAgent for all scrappers.
+     * Configures the userAgent for all scrapers.
      * By default a random userAgent is used.
      */
         userAgent?: "random" | "desktop" | "mobile";
     /**
-     * Sets a proxy url for all scrappers.
+     * Sets a proxy url for all scrapers.
      */
         proxyUrl?: string;
     /**
@@ -115,7 +115,7 @@ export declare type Config = {
     /**
      * The type of the step.
      */
-        type: "scrapper" | "renderlessScrapper" | "script";
+        type: "scraper" | "renderlessScraper" | "script";
     /**
      * The name of the module.
      */
@@ -129,7 +129,7 @@ export declare type Config = {
      */
         config?: StepConfig;
     /**
-     * Specify external modules that should be loaded by the scrapper.
+     * Specify external modules that should be loaded by the scraper.
      */
         load?: StepLoadingOptions;
     /**
@@ -139,7 +139,7 @@ export declare type Config = {
         /**
          * The type of the step.
          */
-            type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
+            type: "scraper" | "renderlessScraper" | "apiScraper" | "script";
         /**
          * The name of the module.
          */
@@ -153,7 +153,7 @@ export declare type Config = {
          */
             config?: StepConfig;
         /**
-         * Specify external modules that should be loaded by the scrapper.
+         * Specify external modules that should be loaded by the scraper.
          */
             load?: StepLoadingOptions;
         }[];
@@ -165,7 +165,7 @@ export declare type Config = {
     /**
      * The type of the step.
      */
-        type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
+        type: "scraper" | "renderlessScraper" | "apiScraper" | "script";
     /**
      * The name of the module.
      */
@@ -179,7 +179,7 @@ export declare type Config = {
      */
         config?: StepConfig;
     /**
-     * Specify external modules that should be loaded by the scrapper.
+     * Specify external modules that should be loaded by the scraper.
      */
         load?: StepLoadingOptions;
     /**
@@ -189,7 +189,7 @@ export declare type Config = {
         /**
          * The type of the step.
          */
-            type: "scrapper" | "renderlessScrapper" | "apiScrapper" | "script";
+            type: "scraper" | "renderlessScraper" | "apiScraper" | "script";
         /**
          * The name of the module.
          */
@@ -203,7 +203,7 @@ export declare type Config = {
          */
             config?: StepConfig;
         /**
-         * Specify external modules that should be loaded by the scrapper.
+         * Specify external modules that should be loaded by the scraper.
          */
             load?: StepLoadingOptions;
         }[];
@@ -220,7 +220,8 @@ export declare function firstPass(config: Config, previous?: string): (string | 
 export declare function checkStepLevels(steps: (string | string[])[]): void;
 export declare function validateStepFormat(steps: (string | string[])[]): void;
 export declare function countSteps(steps: (string | string[])[]): number;
-export declare function isUsingNormalScrapper(steps: (string | string[])[], config: Config): boolean;
+export declare function isUsingNormalScraper(steps: (string | string[])[], config: Config): boolean;
+export declare function hasTypo(steps: (string | string[])[], config: Config): boolean;
 export declare function getObjectReference(config: Config, stepName: string): {
     type?: string;
     module?: string;

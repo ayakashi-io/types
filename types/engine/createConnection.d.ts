@@ -2,7 +2,7 @@
 import { Target } from "./createTarget";
 declare type Unsubscriber = () => void;
 /**
- * Emulation options for the scrapper to use.
+ * Emulation options for the scraper to use.
  */
 export declare type EmulatorOptions = {
 /**

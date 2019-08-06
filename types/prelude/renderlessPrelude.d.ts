@@ -1,26 +1,20 @@
 import { IAyakashiInstance, AyakashiPage } from "./prelude";
+import { IMetaActions } from "./actions/meta";
+import { ISelectActions } from "./actions/select";
+import { IExtractActions } from "./actions/extract";
+import { IRetryActions } from "./actions/retry";
+import { IRequestActions } from "./actions/request";
+import { IYieldActions } from "./actions/yield";
 import { JSDOM } from "jsdom";
-export interface IRenderlessAyakashiInstance {
+declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+declare type MetaActionsNoPause = Omit<IMetaActions, "pause">;
+declare type MetaActionsNoRegisterAction = Omit<MetaActionsNoPause, "registerAction">;
+export interface IRenderlessAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, MetaActionsNoRegisterAction {
     propRefs: IAyakashiInstance["propRefs"];
     extractors: IAyakashiInstance["extractors"];
-    prop: IAyakashiInstance["prop"];
-    evaluate: IAyakashiInstance["evaluate"];
-    evaluateAsync: IAyakashiInstance["evaluateAsync"];
-    defineProp: IAyakashiInstance["defineProp"];
-    registerExtractor: IAyakashiInstance["registerExtractor"];
-    select: IAyakashiInstance["select"];
-    selectFirst: IAyakashiInstance["selectFirst"];
-    selectOne: IAyakashiInstance["selectOne"];
-    selectLast: IAyakashiInstance["selectLast"];
-    extract: IAyakashiInstance["extract"];
-    retry: IAyakashiInstance["retry"];
-    yield: IAyakashiInstance["yield"];
-    yieldEach: IAyakashiInstance["yieldEach"];
-    recursiveYield: IAyakashiInstance["recursiveYield"];
-    recursiveYieldEach: IAyakashiInstance["recursiveYieldEach"];
     page: JSDOM;
 /**
- * Fetches and loads a page in the renderlessScrapper's context.
+ * Fetches and loads a page in the renderlessScraper's context.
  * A timeout can be specified (in ms) for slow pages (default 10s).
  * Use a timeout of 0 to disable the timeout.
 * ```js
@@ -28,6 +22,13 @@ await ayakashi.load("https://ayakashi.io");
 ```
 */
     load: (this: IRenderlessAyakashiInstance, url: string, timeout?: number) => Promise<void>;
+/**
+ * Loads an html fragment in the renderlessScraper's context.
+* ```js
+await ayakashi.loadHtml("<body>hi</body>");
+```
+*/
+    loadHtml: (this: IRenderlessAyakashiInstance, html: string) => Promise<void>;
     __attachDOM: (this: IRenderlessAyakashiInstance, dom: JSDOM) => void;
     __connection: {
         release: () => Promise<void>;
