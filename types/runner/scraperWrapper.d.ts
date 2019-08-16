@@ -2,7 +2,9 @@ import { EmulatorOptions } from "../engine/createConnection";
 declare type PassedLog = {
     id: string;
     body: {
-        input: object;
+        input: {
+            value: unknown;
+        };
         params: object;
         config: {
             pipeConsole?: boolean;

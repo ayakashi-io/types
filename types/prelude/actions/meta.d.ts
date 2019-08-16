@@ -85,5 +85,14 @@ ayakashi.registerExtractor("id", function() {
 ```
 */
     registerExtractor: (extractorName: string, extractorFn: ExtractorFn, dependsOn?: string[]) => void;
+/**
+ * Groups together multiple sets of related data.
+ * Learn more here: https://ayakashi.io/docs/guide/data-extraction.html#grouping-extracted-data
+*/
+    join: (obj: {
+        [key: string]: unknown;
+    }) => {
+        [key: string]: unknown;
+    }[];
 }
 export declare function attachMetaActions(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, connection: IConnection): void;

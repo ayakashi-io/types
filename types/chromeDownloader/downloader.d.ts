@@ -1,1 +1,1 @@
-export declare function downloadChromium(revision: number): Promise<{}>;
+export declare function downloadChromium(revision: number): Promise<unknown>;

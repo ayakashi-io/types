@@ -1,7 +1,9 @@
 declare type PassedLog = {
     id: string;
     body: {
-        input: object;
+        input: {
+            value: unknown;
+        };
         params: object;
         module: string;
         saveTopic: string;
@@ -12,5 +14,7 @@ declare type PassedLog = {
         appRoot: string;
     };
 };
-export default function scriptWrapper(log: PassedLog): Promise<any>;
+export default function scriptWrapper(log: PassedLog): Promise<{
+    value: any;
+} | undefined>;
 export {};

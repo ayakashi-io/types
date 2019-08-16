@@ -12,7 +12,7 @@ export interface IDomProp {
     __trackMissingChildren: boolean;
 /**
  * Defines the query of a new prop.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html
 * ```js
 ayakashi
     .select("myProp")
@@ -26,7 +26,7 @@ ayakashi
     where: (q: Where) => this;
 /**
  * Limits the prop matches.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
 * ```js
 ayakashi
     .select("myProp")
@@ -41,7 +41,7 @@ ayakashi
     limit: (n: number) => this;
 /**
  * Skips some of the prop matches.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
 * ```js
 ayakashi
     .select("myProp")
@@ -56,7 +56,7 @@ ayakashi
     skip: (n: number) => this;
 /**
  * Changes the order of how a prop's matches are retrieved.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#limit-skip-and-order
 * ```js
 ayakashi
     .select("myProp")
@@ -71,7 +71,7 @@ ayakashi
     order: (ord: "asc" | "desc") => this;
 /**
  * Limits the new prop's matches to child elements of an existing prop.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
 * ```js
 ayakashi
     .select("myProp")
@@ -86,7 +86,7 @@ ayakashi
     from: (propId: string | string[] | IDomProp | IDomProp[]) => this;
 /**
  * Manually triggers a prop.
- * Learn more here: http://ayakashi.io/docs/going_deeper/re-evaluating-props.html
+ * Learn more here: https://ayakashi.io/docs/going_deeper/re-evaluating-props.html
 * ```js
 const myProp = ayakashi
     .select("myProp")
@@ -104,7 +104,7 @@ await myProp.trigger();
     }) => Promise<number>;
 /**
  * Makes the prop to ignore its cached elements on its next trigger and be re-evaluated.
- * Learn more here: http://ayakashi.io/docs/going_deeper/re-evaluating-props.html
+ * Learn more here: https://ayakashi.io/docs/going_deeper/re-evaluating-props.html
 * ```js
 const mainSection = ayakashi
     .select()
@@ -129,7 +129,7 @@ mainSection.update();
     update: () => this;
 /**
  * Defines a new child query with a limit of 1 match.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
 * ```js
 ayakashi
     .select("myParentProp")
@@ -149,7 +149,7 @@ ayakashi
     selectChild: (childPropId?: string) => IDomProp;
 /**
  * Defines a new child query with a limit of 1 match.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
  * Alias of selectChild()
 * ```js
 ayakashi
@@ -170,7 +170,7 @@ ayakashi
     selectFirstChild: (childPropId?: string) => IDomProp;
 /**
  * Defines a new child query with a limit of 1 match in and a descending ordering.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
  * Alias of selectChild()
 * ```js
 ayakashi
@@ -191,7 +191,7 @@ ayakashi
     selectLastChild: (childPropId?: string) => IDomProp;
 /**
  * Defines a new child query with no match limit.
- * Learn more here: http://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#child-queries
  * Alias of selectChild()
 * ```js
 ayakashi
@@ -232,6 +232,7 @@ while (await next.hasMatches()) {
 /**
  * Adds a child match placeholder if a child does not exist in a collection of parents.
  * Can be used to preserve proper ordering when extracting children that might sometimes not exist.
+ * Learn more here: https://ayakashi.io/docs/guide/querying-with-domql.html#tracking-missing-children
 * ```js
 // for the following html
 // <div class="container"><a href="http://example.com">link1</a></div>
@@ -253,9 +254,9 @@ ayakashi
         });
 const result = await ayakashiInstance.extract("childProp");
 // When we extract the childProps, we will get the following (notice the empty childProp):
-// result => [{childProp: "link1"}, {childProp: ""}, {childProp: "link2"}]
+// result => ["link1", "", "link2"]
 // if we didn't use trackMissingChildren(), we would have gotten:
-// result => [{childProp: "link1"}, {childProp: "link2"}]
+// result => ["link1", "link2"]
 ```
 */
     trackMissingChildren: () => IDomProp;

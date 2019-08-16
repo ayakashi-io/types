@@ -1,10 +1,8 @@
 export default function (input: {
-    [key: string]: {
-        [key: string]: unknown;
-    }[] | {
-        [key: string]: unknown;
-    }[];
-}, params: {
+    [key: string]: unknown;
+} | {
+    [key: string]: unknown;
+}[], params: {
     dialect?: "mysql" | "mariadb" | "postgres" | "mssql" | "sqlite";
     host?: string;
     port?: number;
@@ -18,9 +16,7 @@ export default function (input: {
     operationId: string;
     startDate: string;
 }): Promise<{
-    [key: string]: {
-        [key: string]: unknown;
-    }[] | {
-        [key: string]: unknown;
-    }[];
-} | undefined>;
+    [key: string]: unknown;
+} | {
+    [key: string]: unknown;
+}[] | undefined>;

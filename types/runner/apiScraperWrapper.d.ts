@@ -1,7 +1,9 @@
 declare type PassedLog = {
     id: string;
     body: {
-        input: object;
+        input: {
+            value: unknown;
+        };
         params: object;
         config: {
             simple?: boolean;
