@@ -8,6 +8,7 @@ declare type PassedLog = {
         module: string;
         saveTopic: string;
         projectFolder: string;
+        storeProjectFolder: string;
         operationId: string;
         startDate: string;
         procName: string;

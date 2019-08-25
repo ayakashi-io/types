@@ -1,5 +1,5 @@
 import { Config } from "../runner/parseConfig";
-export declare function getOrCreateStoreProjectFolder(projectFolderOrScraperName: string): Promise<string>;
+export declare function getOrCreateStoreProjectFolder(projectFolderOrScraperName: string, sessionKey: string): Promise<string>;
 export declare function hasPreviousRun(projectFolderOrScraperName: string): Promise<boolean>;
 export declare function clearPreviousRun(projectFolderOrScraperName: string): Promise<void>;
 export declare function getPipeprocFolder(projectFolderOrScraperName: string): string;

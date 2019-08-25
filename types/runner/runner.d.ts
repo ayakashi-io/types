@@ -4,4 +4,5 @@ export declare function run(projectFolder: string, config: Config, options: {
     restartDisabledSteps: boolean;
     clean: boolean;
     simpleScraper: string | null;
+    sessionKey: string;
 }): Promise<void>;
