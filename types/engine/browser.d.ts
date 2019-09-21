@@ -10,8 +10,6 @@ export interface IHeadlessChrome {
         headless?: boolean;
         maxTargets?: number;
         launchAttempts?: number;
-        ignoreCertificateErrors?: boolean;
-        userAgent?: string;
         autoOpenDevTools?: boolean;
         proxyUrl?: string;
         sessionDir?: string;

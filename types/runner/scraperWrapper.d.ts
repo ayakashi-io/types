@@ -1,4 +1,4 @@
-import { EmulatorOptions } from "../engine/createConnection";
+import { EmulatorOptions } from "../runner/parseConfig";
 declare type PassedLog = {
     id: string;
     body: {

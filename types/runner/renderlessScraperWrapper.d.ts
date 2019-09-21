@@ -1,3 +1,4 @@
+import { EmulatorOptions } from "../runner/parseConfig";
 declare type PassedLog = {
     id: string;
     body: {
@@ -9,6 +10,7 @@ declare type PassedLog = {
             pipeConsole?: boolean;
             pipeExceptions?: boolean;
             localAutoLoad?: boolean;
+            emulatorOptions?: EmulatorOptions;
             simple?: boolean;
         };
         load: {

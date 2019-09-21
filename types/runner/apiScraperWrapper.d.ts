@@ -1,3 +1,4 @@
+import { EmulatorOptions } from "../runner/parseConfig";
 declare type PassedLog = {
     id: string;
     body: {
@@ -7,6 +8,7 @@ declare type PassedLog = {
         params: object;
         config: {
             simple?: boolean;
+            emulatorOptions?: EmulatorOptions;
         };
         module: string;
         saveTopic: string;

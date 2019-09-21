@@ -1,4 +1,38 @@
-import { EmulatorOptions } from "../engine/createConnection";
+/**
+ * Emulation options for the scraper to use.
+ */
+export declare type EmulatorOptions = {
+/**
+ * Sets the available width.
+ */
+    width: number;
+/**
+ * Sets the available height.
+ */
+    height: number;
+/**
+ * Set it to true to emulate a mobile device.
+ */
+    mobile: boolean;
+    deviceScaleFactor: 0;
+/**
+ * Configures the userAgent for this scraper.
+ * By default a random chrome-desktop userAgent is used.
+ */
+    userAgent?: "random" | "desktop" | "mobile" | "chrome-desktop" | "chrome-mobile";
+/**
+ * Configures the language for this scraper.
+ * It will be applied as the browser's language and on the Accept-Language header on HTTP requests.
+ * Defaults to "en-US".
+ */
+    acceptLanguage?: string;
+/**
+ * Configures the value navigator.platform should return.
+ * Defaults to "Win32" for desktop and "Linux armv8l" for mobile.
+ * Setting a custom platform will also affect the generated userAgent.
+ */
+    platform?: "Win32" | "MacIntel" | "Linux armv8l" | "Linux armv7l" | "iPad" | "iPhone" | "Linux x86_64";
+};
 declare type StepConfig = {
 /**
  * Set it to `false` to disable the page console logs from getting printed.
@@ -64,11 +98,6 @@ export declare type Config = {
      */
         headless?: boolean;
     /**
-     * Configures the userAgent for all scrapers.
-     * By default a random userAgent is used.
-     */
-        userAgent?: "random" | "desktop" | "mobile";
-    /**
      * Sets a proxy url for all scrapers.
      */
         proxyUrl?: string;
@@ -107,6 +136,16 @@ export declare type Config = {
      * Sets the port of the internal devTools protocol server, default is 9730. Use 0 for a random port.
      */
         protocolPort?: number;
+    /**
+     * Sets the number of workers to use.
+     * Defaults to "auto" which will spawn as many workers as needed by the current pipeline (not more than the total system thread count).
+     */
+        workers?: number;
+    /**
+     * Sets the number of steps each worker can execute at the same time.
+     * Defaults to 1. It should only be increased if there are more parallel steps than the worker count and the steps are mostly I/O bound.
+     */
+        workerConcurrency?: number;
     };
 /**
  * Execute the steps in a serial manner by passing each step's output to next one's input.
@@ -115,7 +154,7 @@ export declare type Config = {
     /**
      * The type of the step.
      */
-        type: "scraper" | "renderlessScraper" | "script";
+        type: "scraper" | "renderlessScraper" | "apiScraper" | "script";
     /**
      * The name of the module.
      */

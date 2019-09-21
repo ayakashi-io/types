@@ -1,24 +1,7 @@
 /// <reference types="node" />
 import { Target } from "./createTarget";
+import { EmulatorOptions } from "../runner/parseConfig";
 declare type Unsubscriber = () => void;
-/**
- * Emulation options for the scraper to use.
- */
-export declare type EmulatorOptions = {
-/**
- * Sets the available width.
- */
-    width: number;
-/**
- * Sets the available height.
- */
-    height: number;
-/**
- * Set it to true to emulate a mobile device.
- */
-    mobile: boolean;
-    deviceScaleFactor: 0;
-};
 export interface ICDPClient {
     _ws: {
         readyState: 1 | 2 | 3;
@@ -71,16 +54,24 @@ export interface ICDPClient {
     };
     Security: {
         enable: () => Promise<void>;
+        setIgnoreCertificateErrors: (arg: {
+            ignore: boolean;
+        }) => Promise<void>;
     };
     Console: {
         enable: () => Promise<void>;
     };
     Emulation: {
-        setDeviceMetricsOverride: (metrics: EmulatorOptions) => void;
+        setDeviceMetricsOverride: (metrics: EmulatorOptions) => Promise<void>;
         setVisibleSize: (size: {
             width: EmulatorOptions["width"];
             height: EmulatorOptions["height"];
-        }) => void;
+        }) => Promise<void>;
+        setUserAgentOverride: (arg: {
+            userAgent: string;
+            acceptLanguage: string;
+            platform: string;
+        }) => Promise<void>;
     };
     Target: {
         createTarget: (options: {
