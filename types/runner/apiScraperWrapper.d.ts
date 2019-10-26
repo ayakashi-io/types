@@ -11,6 +11,9 @@ declare type PassedLog = {
             emulatorOptions?: EmulatorOptions;
         };
         module: string;
+        connectionConfig: {
+            bridgePort: number;
+        };
         saveTopic: string;
         selfTopic: string;
         projectFolder: string;

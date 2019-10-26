@@ -2,6 +2,17 @@
 import { Target } from "./createTarget";
 import { EmulatorOptions } from "../runner/parseConfig";
 declare type Unsubscriber = () => void;
+export declare type ChromeCookie = {
+    name: string;
+    value: string;
+    url?: string;
+    domain?: string;
+    path?: string;
+    secure?: boolean;
+    httpOnly?: boolean;
+    sameSite?: "Strict" | "Lax" | "Extended" | "None";
+    expires?: number;
+};
 export interface ICDPClient {
     _ws: {
         readyState: 1 | 2 | 3;
@@ -12,6 +23,14 @@ export interface ICDPClient {
     };
     Network: {
         enable: () => Promise<void>;
+        setCookies: (arg: {
+            cookies: ChromeCookie[];
+        }) => Promise<boolean>;
+        getCookies: (arg?: {
+            urls?: string[];
+        }) => Promise<{
+            cookies: ChromeCookie[];
+        }>;
     };
     Page: {
         enable: () => Promise<void>;
@@ -160,5 +179,5 @@ export interface IConnection {
         }) => Promise<void>;
     };
 }
-export declare function createConnection(target: Target, bridgePort: number, emulatorOptions?: EmulatorOptions, disabledBridge?: boolean): Promise<IConnection>;
+export declare function createConnection(target: Target, bridgePort: number, emulatorOptions?: EmulatorOptions): Promise<IConnection>;
 export {};

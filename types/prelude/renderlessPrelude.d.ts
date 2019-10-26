@@ -5,11 +5,12 @@ import { IExtractActions } from "./actions/extract";
 import { IRetryActions } from "./actions/retry";
 import { IRequestActions } from "./actions/request";
 import { IYieldActions } from "./actions/yield";
+import { ICookieActions } from "./actions/cookies";
 import { JSDOM } from "jsdom";
 declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 declare type MetaActionsNoPause = Omit<IMetaActions, "pause">;
 declare type MetaActionsNoRegisterAction = Omit<MetaActionsNoPause, "registerAction">;
-export interface IRenderlessAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, MetaActionsNoRegisterAction {
+export interface IRenderlessAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, MetaActionsNoRegisterAction, ICookieActions {
     propRefs: IAyakashiInstance["propRefs"];
     extractors: IAyakashiInstance["extractors"];
     page: JSDOM;
@@ -29,7 +30,7 @@ await ayakashi.loadHtml("<body>hi</body>");
 ```
 */
     loadHtml: (this: IRenderlessAyakashiInstance, html: string) => Promise<void>;
-    __attachDOM: (this: IRenderlessAyakashiInstance, dom: JSDOM) => void;
+    __attachDOM: (this: IRenderlessAyakashiInstance, dom: JSDOM) => Promise<void>;
     __connection: {
         release: () => Promise<void>;
     };

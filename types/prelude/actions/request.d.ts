@@ -34,4 +34,4 @@ export interface IRequestActions {
 */
     head: (uri: string, options?: CoreOptions) => Promise<any>;
 }
-export declare function attachRequest(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance | IApiAyakashiInstance, requestInstance: RequestAPI<Request, CoreOptions, RequiredUriUrl>): void;
+export declare function attachRequest(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance | IApiAyakashiInstance, requestInstance: RequestAPI<Request, CoreOptions, RequiredUriUrl>, cookieSyncCallback: () => Promise<void>): void;

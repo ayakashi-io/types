@@ -4,10 +4,11 @@ import { ISelectActions } from "./actions/select";
 import { ExtractorFn, IExtractActions } from "./actions/extract";
 import { IYieldActions } from "./actions/yield";
 import { IRequestActions } from "./actions/request";
+import { ICookieActions } from "./actions/cookies";
 import { IDomProp } from "./query/query";
 import { Query, QueryOptions } from "../domQL/domQL";
 import { IRetryActions } from "./actions/retry";
-export interface IAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, IMetaActions {
+export interface IAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, IMetaActions, ICookieActions {
     propRefs: {
         [key: string]: IDomProp;
     };

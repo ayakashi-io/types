@@ -23,6 +23,9 @@ declare type PassedLog = {
             }[];
         };
         module: string;
+        connectionConfig: {
+            bridgePort: number;
+        };
         saveTopic: string;
         selfTopic: string;
         projectFolder: string;

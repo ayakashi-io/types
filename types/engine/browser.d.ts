@@ -1,10 +1,7 @@
-/// <reference types="node" />
 import { IBrowserInstance } from "./launcher";
 import { Target } from "./createTarget";
-import { Server } from "http";
 export interface IHeadlessChrome {
     chromeInstance: IBrowserInstance | null;
-    bridge: Server | null;
     init: (options: {
         chromePath: string;
         headless?: boolean;
@@ -15,7 +12,6 @@ export interface IHeadlessChrome {
         sessionDir?: string;
         windowWidth?: number;
         windowHeight?: number;
-        bridgePort: number;
         protocolPort: number;
     }) => Promise<void>;
     close: () => Promise<void>;
