@@ -1,6 +1,6 @@
 {
   "name": "@ayakashi/types",
-  "version": "1.0.0-beta5.4",
+  "version": "1.0.0-beta6",
   "description": "Type definitions to provide editor support",
   "author": {
     "name": "ayakashi.io",
