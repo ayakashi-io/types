@@ -1,5 +1,6 @@
 import { IConnection } from "../engine/createConnection";
 import { IMetaActions } from "./actions/meta";
+import { IJoinActions } from "./actions/join";
 import { ISelectActions } from "./actions/select";
 import { ExtractorFn, IExtractActions } from "./actions/extract";
 import { IYieldActions } from "./actions/yield";
@@ -8,7 +9,7 @@ import { ICookieActions } from "./actions/cookies";
 import { IDomProp } from "./query/query";
 import { Query, QueryOptions } from "../domQL/domQL";
 import { IRetryActions } from "./actions/retry";
-export interface IAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, IMetaActions, ICookieActions {
+export interface IAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, IMetaActions, ICookieActions, IJoinActions {
     propRefs: {
         [key: string]: IDomProp;
     };
@@ -16,6 +17,12 @@ export interface IAyakashiInstance extends IRetryActions, IRequestActions, IYiel
     extractors: {
         [key: string]: () => Promise<void>;
     };
+}
+export interface IPreloaders {
+    domQL: {
+        domQuery: (q: Query, opts?: QueryOptions) => HTMLElement[];
+    };
+    getNodeSelector: (el: HTMLElement) => string;
 }
 export declare type AyakashiPage = {
     propTable: {
@@ -26,12 +33,7 @@ export declare type AyakashiPage = {
     extractors: {
         [key: string]: ExtractorFn;
     };
-    preloaders: {
-        domQL: {
-            domQuery: (q: Query, opts?: QueryOptions) => HTMLElement[];
-        };
-        getNodeSelector: (el: HTMLElement) => string;
-    };
+    preloaders: IPreloaders;
     paused: boolean;
     resume: () => void;
     document: Document;

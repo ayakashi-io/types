@@ -1,5 +1,6 @@
 import { IAyakashiInstance, AyakashiPage } from "./prelude";
 import { IMetaActions } from "./actions/meta";
+import { IJoinActions } from "./actions/join";
 import { ISelectActions } from "./actions/select";
 import { IExtractActions } from "./actions/extract";
 import { IRetryActions } from "./actions/retry";
@@ -10,7 +11,7 @@ import { JSDOM } from "jsdom";
 declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 declare type MetaActionsNoPause = Omit<IMetaActions, "pause">;
 declare type MetaActionsNoRegisterAction = Omit<MetaActionsNoPause, "registerAction">;
-export interface IRenderlessAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, MetaActionsNoRegisterAction, ICookieActions {
+export interface IRenderlessAyakashiInstance extends IRetryActions, IRequestActions, IYieldActions, IExtractActions, ISelectActions, MetaActionsNoRegisterAction, ICookieActions, IJoinActions {
     propRefs: IAyakashiInstance["propRefs"];
     extractors: IAyakashiInstance["extractors"];
     page: JSDOM;

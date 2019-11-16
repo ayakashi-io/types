@@ -141,8 +141,8 @@ export interface IConnection {
     useNameSpace: (ns: string) => Promise<void>;
     activate: () => Promise<void>;
     release: () => Promise<void>;
-    evaluate: <T>(fn: (...args: any[]) => T, ...args: any[]) => Promise<T>;
-    evaluateAsync: <T>(fn: (...args: any[]) => Promise<T>, ...args: any[]) => Promise<T>;
+    evaluate: <T, U extends any[]>(fn: (this: Window["ayakashi"], ...params: U) => T, ...args: U) => Promise<T>;
+    evaluateAsync: <T, U extends any[]>(fn: (this: Window["ayakashi"], ...params: U) => Promise<T>, ...args: U) => Promise<T>;
     injectPreloader: (options: {
         compiled: {
             wrapper: string;

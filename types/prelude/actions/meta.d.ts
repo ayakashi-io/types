@@ -22,7 +22,7 @@ const title = await ayakashi.evaluate(function() {
 });
 ```
 */
-    evaluate: <T>(fn: (this: Window["ayakashi"], ...args: any[]) => T, ...args: any[]) => Promise<T>;
+    evaluate: <T, U extends any[]>(fn: (this: Window["ayakashi"], ...params: U) => T, ...args: U) => Promise<T>;
 /**
  * Evaluates an asynchronous javascript function in the current page.
  * Learn more here: https://ayakashi.io/docs/going_deeper/evaluating-javascript-expressions.html
@@ -36,7 +36,7 @@ await ayakashi.evaluateAsync(function() {
 });
 ```
 */
-    evaluateAsync: <T>(fn: (this: Window["ayakashi"], ...args: any[]) => Promise<T>, ...args: any[]) => Promise<T>;
+    evaluateAsync: <T, U extends any[]>(fn: (this: Window["ayakashi"], ...params: U) => Promise<T>, ...args: U) => Promise<T>;
 /**
  * Defines a new prop without using the domQL syntax.
  * Learn more here: https://ayakashi.io/docs/going_deeper/defining-props-without-domql.html
@@ -85,14 +85,5 @@ ayakashi.registerExtractor("id", function() {
 ```
 */
     registerExtractor: (extractorName: string, extractorFn: ExtractorFn, dependsOn?: string[]) => void;
-/**
- * Groups together multiple sets of related data.
- * Learn more here: https://ayakashi.io/docs/guide/data-extraction.html#grouping-extracted-data
-*/
-    join: <T>(obj: T) => {
-        [P in keyof T]: valueof<T[P]>;
-    }[];
 }
-declare type valueof<T> = T extends (infer U)[] ? U : T;
 export declare function attachMetaActions(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, connection: IConnection): void;
-export {};
