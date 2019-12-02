@@ -8,8 +8,8 @@ export declare function loadLocalProps(ayakashiInstance: IAyakashiInstance | IRe
 export declare function loadLocalActions(ayakashiInstance: IAyakashiInstance, projectFolder: string): void;
 export declare function loadLocalExtractors(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, projectFolder: string): void;
 export declare function loadLocalPreloaders(connection: IConnection, projectFolder: string, storeProjectFolder: string): Promise<void>;
-export declare function loadExternalActions(ayakashiInstance: IAyakashiInstance, actions?: string[]): void;
-export declare function loadExternalExtractors(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, extractors?: string[]): void;
+export declare function loadExternalActions(ayakashiInstance: IAyakashiInstance, projectFolder: string, actions?: string[]): void;
+export declare function loadExternalExtractors(ayakashiInstance: IAyakashiInstance | IRenderlessAyakashiInstance, projectFolder: string, extractors?: string[]): void;
 export declare function loadExternalPreloaders(connection: IConnection, projectFolder: string, storeProjectFolder: string, preloaders?: string[] | {
     module: string;
     as?: string;
