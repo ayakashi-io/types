@@ -26,14 +26,14 @@ module.exports = {
 }
 ```
 
-### For scrappers
+### For scrapers
 
 ```js
 /**
  * @param {import("@ayakashi/types").IAyakashiInstance} ayakashi
  */
 module.exports = async function(ayakashi, input, params) {
-    //... scrapper code
+    //... scraper code
 }
 ```
 
