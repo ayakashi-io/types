@@ -56,7 +56,7 @@ declare type StepConfig = {
     simple?: boolean;
 /**
  * How many times to retry the step if there is an error.
- * Learn more about retries at https://ayakashi.io/docs/going_deeper/automatic_retries.html
+ * Learn more about retries at https://ayakashi-io.github.io/docs/going_deeper/automatic_retries.html
  * No retries are performed by default.
  */
     retries?: number;
@@ -108,7 +108,7 @@ export declare type Config = {
         openDevTools?: boolean;
     /**
      * Persists the session data of all pages instead of using a temporary session each time.
-     * Learn more here https://ayakashi.io./docs/going_deeper/persisting-sessions.html
+     * Learn more here https://ayakashi-io.github.io./docs/going_deeper/persisting-sessions.html
      */
         persistentSession?: boolean;
     /**
@@ -121,7 +121,7 @@ export declare type Config = {
         windowHeight?: number;
     /**
      * Use a custom chrome/chromium executable instead of the auto-downloaded one.
-     * Learn more here: https://ayakashi.io/docs/going_deeper/using-a-different-chrome.html
+     * Learn more here: https://ayakashi-io.github.io/docs/going_deeper/using-a-different-chrome.html
      */
         chromePath?: string;
     /**

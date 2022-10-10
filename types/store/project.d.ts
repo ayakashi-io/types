@@ -5,4 +5,7 @@ export declare function clearPreviousRun(projectFolderOrScraperName: string): Pr
 export declare function getPipeprocFolder(projectFolderOrScraperName: string): string;
 export declare function saveLastConfig(config: Config, storeProjectFolder: string): Promise<void>;
 export declare function getLastConfig(storeProjectFolder: string): Promise<string>;
-export declare function configChanged(config: Config, storeProjectFolder: string): Promise<[boolean, Config]>;
+export declare function configChanged(config: Config, storeProjectFolder: string): Promise<[
+    boolean,
+    Config
+]>;

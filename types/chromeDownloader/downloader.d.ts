@@ -1,1 +1,2 @@
-export declare function downloadChromium(revision: number): Promise<unknown>;
+export declare function downloadChromium(newRevision: number, storedRevision: number): Promise<void>;
+export declare function getRecommendedChromiumRevision(): Promise<number>;

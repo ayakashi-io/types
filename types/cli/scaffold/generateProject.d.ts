@@ -1,1 +1,1 @@
-export declare function generateProject(projectDir: string, useCurrentFolder: boolean): Promise<void>;
+export declare function generateProject(projectDir: string, useCurrentFolder: boolean, ts: boolean): Promise<void>;

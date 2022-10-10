@@ -1,1 +1,1 @@
-export declare function getName(name: string | undefined, typeForQuestion: string): Promise<string>;
+export declare function getName(name: unknown, typeForQuestion: string): Promise<string>;
